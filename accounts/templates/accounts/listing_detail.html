@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Details</title>
+    <link rel="stylesheet" href="{% static 'css/listingstyle.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="{% static 'imgs/logos.png' %}" alt="Digital Hub Logo" class="logo" />
+            <h1>Digital Hub</h1>
+        </div>
+        <div class="navbar-right">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'contact' %}">Contact Us</a>
+            <a href="{% url 'register' %}">Registration</a>
+            <a href="{% url 'custom_login' %}">Login</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Listing Details</h1>
+        <div class="listing-detail card mx-auto" style="max-width: 600px;">
+            <div class="card-body">
+                <h2 class="card-title">{{ listing.title }}</h2>
+                <p class="card-text">Description: {{ listing.description }}</p>
+                <p class="card-text">Price: ${{ listing.price }}</p>
+                <p class="card-text">Category: {{ listing.category }}</p>
+                <p class="card-text">Seller: {{ listing.seller.username }}</p>
+                <p class="card-text">RAM: {{ listing.ram }}</p>
+                <p class="card-text">ROM: {{ listing.rom }}</p>
+                <p class="card-text">Model: {{ listing.model }}</p>
+           {% if listing.img1 %}
+                <img src="{{ listing.img1.url }}"/>
+            {% else %}
+                <p>No image available for Image 1</p>
+            {% endif %}
+            <br> <br>
+            {% if listing.img2 %}
+                <img src="{{ listing.img2.url }}"/>
+            {% else %}
+                <p>No image available for Image 2</p>
+            {% endif %}
+            <br> <br>
+            {% if listing.img3 %}
+
+                 <img src="{{ listing.img3.url }}"/>
+            {% else %}
+                <p>No image available for Image 3</p>
+            {% endif %}
+            
+                {% if listing.reviews.all %}
+                <ul class="list-unstyled">
+                    {% for review in listing.reviews.all %}
+                    <li class="mb-3">
+                        <strong>Rating:</strong> {{ review.rating }}<br />
+                        <strong>Review:</strong> {{ review.comment }}<br />
+                        <strong>Reviewer:</strong> {{ review.reviewer.username }}<br />
+                        <strong>Date:</strong> {{ review.date_posted }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No reviews available</p>
+                {% endif %}
+                <a href="{% url 'shipping_form' listing.id %}" class="btn btn-primary">Buy Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>Digital Hub</h2>
+                <p>Your go-to platform for digital products. We offer a wide range of digital goods to cater to all your needs.</p>
+                <div class="socials">
+                    <a href="#"><img src="{% static 'imgs/facebok.png' %}" alt="Facebook" /></a>
+                    <a href="#"><img src="{% static 'imgs/xicon.png' %}" alt="Twitter" /></a>
+                    <a href="#"><img src="{% static 'imgs/instagram.jpeg' %}" alt="Instagram" /></a>
+                    <a href="#"><img src="{% static 'imgs/linkdlen.jpg' %}" alt="LinkedIn" /></a>
+                </div>
+            </div>
+            <div class="footer-section contact">
+                <h2>Contact Us</h2>
+                <p>123 Digital Hub Street, Tech City, Bahawalpur</p>
+                <p>Email: support@digitalhub.com</p>
+                <p>Phone: 923160649271</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Digital Hub | Designed by Kashif Noor
+        </div>
+    </footer>
+</body>
+</html>

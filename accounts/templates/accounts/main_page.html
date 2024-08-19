@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Listings</h1>
+    {% for listing in listings %}
+        <div class="listing">
+            <h2>{{ listing.title }}</h2>
+            <p>{{ listing.description }}</p>
+            <p>Price: ${{ listing.price }}</p>
+            <h3>Reviews:</h3>
+            {% for review in listing.reviews.all %}
+                <div class="review">
+                    <p>Rating: {{ review.rating }} stars</p>
+                    <p>{{ review.comment }}</p>
+                    <p>By: {{ review.user.username }} on {{ review.date_posted }}</p>
+                </div>
+            {% empty %}
+                <p>No reviews yet.</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>
+

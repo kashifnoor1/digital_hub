@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout</title>
+  </head>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #4caf50;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      margin: 0 auto;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    input[type="number"]:focus {
+      border-color: #4caf50;
+      outline: none;
+    }
+
+    .stripe-button-el {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    p.error {
+      color: #ff0000;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 15px;
+        width: 90%;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      input[type="number"] {
+        font-size: 14px;
+      }
+    }
+  </style>
+  <body>
+    <h1>Checkout</h1>
+
+    {% if error %}
+    <p class="error">Error: {{ error }}</p>
+    {% endif %}
+
+    <form action="{% url 'checkout' pk=pk %}" method="post" id="payment-form">
+      {% csrf_token %}
+
+      <script
+        src="https://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-key="{{ '' }}"
+        data-amount="{{amount}}"
+        data-name="My Store"
+        data-description="Example charge"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-currency="usd"
+        data-email="{{ user.email }}"
+        data-locale="auto"
+      ></script>
+    </form>
+
+    <script>
+      document.getElementById("amount").addEventListener("input", function () {
+        var amount = parseFloat(this.value) * 100; // Convert amount to cents
+        document
+          .querySelector(".stripe-button")
+          .setAttribute("data-amount", amount);
+      });
+    </script>
+  </body>
+</html>

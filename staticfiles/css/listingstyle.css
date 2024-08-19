@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: linen;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.navbar .logo {
+    max-height: 50px;
+    margin-right: 15px;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+/*.card {*/
+/*    margin-top: 20px;*/
+/*    !*background-color: linen; *!*/
+/*}*/
+
+.card-body {
+    padding: 20px;
+     background-color: linen;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer .footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer .footer-section {
+    margin: 15px;
+    max-width: 300px;
+}
+
+.footer .footer-section h2 {
+    margin-top: 0;
+}
+
+.footer .socials a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.footer .socials img {
+    max-height: 20px;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.container {
+    background-color: linen; /* Set the container background color to linen */
+    padding: 20px; /* Optional: add padding to the container for better spacing */
+}
+
+.list-unstyled {
+    padding: 0;
+    margin: 0;
+}
+
+.list-unstyled li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.list-unstyled li:last-child {
+    border-bottom: none;
+}
+
+.list-unstyled strong {
+    color: #333;
+}
+
+.list-unstyled .reviewer {
+    color: #555;
+    font-weight: bold;
+    margin-top: 5px;
+    display: block;
+}
+
+.list-unstyled .review-date {
+    color: #888;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
