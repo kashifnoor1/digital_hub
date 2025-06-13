@@ -1,0 +1,23 @@
+# .gitignore
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+env/
+venv/
+*.env
+db.sqlite3
+/staticfiles
+/media
+.DS_Store
+*.log
+*.pot
+*.py[cod]
+docker-compose.override.yml
+*.pid
+*.tar.gz
+*.egg-info
+*.idea/
+*.vscode/
